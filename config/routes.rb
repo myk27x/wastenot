@@ -4,6 +4,12 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  resources :receiver
+
+  resources :donor
+
+  resources :transporter
+
   # login  = new_user_session_path
   # logout = destroy_user_session_path
 
