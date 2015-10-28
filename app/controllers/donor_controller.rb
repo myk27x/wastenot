@@ -1,7 +1,20 @@
 class DonorController < ApplicationController
 
+  def index
+    @donor = Donor.find_by(current_user.id)
+  end
+
+  def show
+    @donors = Donor.all
+  end
+
+  # def new
+  #   @user = User.new
+  #   @donor = Donor.new
+  # end
+
   def create
-    @donor = donor.new(donor_params)
+    @donor = Donor.new(donor_params)
     @donor.user_id    = current_user.id
     @donor.user_email = current_user.email
     @donor.save
