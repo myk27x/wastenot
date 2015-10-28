@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  name: MyString
+  cell_phone: 1
+  open: 2015-10-27 23:34:59
+  close: 2015-10-27 23:34:59
+
+two:
+  user_id: 1
+  name: MyString
+  cell_phone: 1
+  open: 2015-10-27 23:34:59
+  close: 2015-10-27 23:34:59

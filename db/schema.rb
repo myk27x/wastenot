@@ -11,7 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027160831) do
+ActiveRecord::Schema.define(version: 20151028033459) do
+
+  create_table "donors", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "org_name"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "contact_name"
+    t.integer  "phone"
+    t.string   "user_email"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "receivers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "org_name"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "contact_name"
+    t.integer  "phone"
+    t.string   "user_email"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.boolean  "has_need"
+    t.time     "open"
+    t.time     "close"
+    t.text     "delivery_instructions"
+  end
+
+  create_table "transporters", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "cell_phone"
+    t.time     "open"
+    t.time     "close"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
