@@ -19,11 +19,14 @@ gem 'jquery-rails'
 # For user authentication
 gem 'devise'
 
+# Use for environment variables
+gem 'dotenv-rails'
+
 # Use PostgreSQL for database management on Heroku
 gem 'pg'
 
 # Use for email-to-text for transporters
-gem 'sms-easy'
+gem 'twilio-ruby'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
