@@ -22,6 +22,6 @@ class TransporterController < ApplicationController
   private
 
   def transporter_params
-    params.require(:transporter).permit(:name, :cell_phone, :open, :close)
+    params.require(:transporter).permit(:name, :cell_phone, :cell_carrier, :open, :close)
   end
 end

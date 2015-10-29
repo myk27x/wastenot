@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028033459) do
+ActiveRecord::Schema.define(version: 20151029031226) do
 
   create_table "donors", force: :cascade do |t|
     t.integer  "user_id"
@@ -51,8 +51,9 @@ ActiveRecord::Schema.define(version: 20151028033459) do
     t.integer  "cell_phone"
     t.time     "open"
     t.time     "close"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "cell_carrier"
   end
 
   create_table "users", force: :cascade do |t|
