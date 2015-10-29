@@ -1,2 +1,2 @@
-class Receiver < User
+class Receiver < ActiveRecord::Base
 end

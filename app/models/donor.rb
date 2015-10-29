@@ -1,2 +1,2 @@
-class Donor < User
+class Donor < ActiveRecord::Base
 end
