@@ -22,6 +22,9 @@ gem 'devise'
 # Use PostgreSQL for database management on Heroku
 gem 'pg'
 
+# Use for email-to-text for transporters
+gem 'sms-easy'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
