@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :transporter
 
+  post 'notifications/notify' => 'notifications#notify'
+
   # login  = new_user_session_path
   # logout = destroy_user_session_path
 
