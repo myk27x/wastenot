@@ -10,6 +10,7 @@ class TransporterController < ApplicationController
 
   def create
     @transporter = Transporter.new(transporter_params)
+
     @transporter.user_id = current_user.id
     @transporter.save
 
@@ -22,6 +23,6 @@ class TransporterController < ApplicationController
   private
 
   def transporter_params
-    params.require(:transporter).permit(:name, :cell_phone, :cell_carrier, :open, :close)
+    params.require(:transporter).permit(:name, :cell_phone, :open, :close)
   end
 end
