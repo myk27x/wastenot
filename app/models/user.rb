@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   has_one :receiver
   has_one :donor
   has_one :transporter
+
+  def sms_number
+    transporter.cell_phone
+  end
 end
