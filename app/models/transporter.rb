@@ -4,6 +4,6 @@ class Transporter < ActiveRecord::Base
   belongs_to :user
 
   def self.available(transporter)
-    ( Time.now.hour > transporter.open ) && ( Time.now.hour < transporter.close )
+    Time.now.hour.between?( transporter.open, transporter.close )
   end
 end
