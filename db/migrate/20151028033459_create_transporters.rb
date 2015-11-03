@@ -4,8 +4,8 @@ class CreateTransporters < ActiveRecord::Migration
       t.integer  :user_id
       t.string   :name
       t.string   :cell_phone
-      t.time     :open
-      t.time     :close
+      t.integer  :open
+      t.integer  :close
 
       t.timestamps null: false
     end

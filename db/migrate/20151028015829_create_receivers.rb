@@ -9,7 +9,6 @@ class CreateReceivers < ActiveRecord::Migration
       t.integer  :zip
       t.string   :contact_name
       t.integer  :phone
-      t.string   :user_email
 
       t.timestamps null: false
     end

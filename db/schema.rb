@@ -29,10 +29,9 @@ ActiveRecord::Schema.define(version: 20151102230900) do
     t.string   "street_address"
     t.string   "city"
     t.string   "state"
-    t.integer  "zip"
+    t.string   "zip"
     t.string   "contact_name"
-    t.integer  "phone"
-    t.string   "user_email"
+    t.string   "phone"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -46,12 +45,11 @@ ActiveRecord::Schema.define(version: 20151102230900) do
     t.integer  "zip"
     t.string   "contact_name"
     t.integer  "phone"
-    t.string   "user_email"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.boolean  "has_need"
-    t.time     "open"
-    t.time     "close"
+    t.integer  "open"
+    t.integer  "close"
     t.text     "delivery_instructions"
   end
 
@@ -59,8 +57,8 @@ ActiveRecord::Schema.define(version: 20151102230900) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "cell_phone"
-    t.time     "open"
-    t.time     "close"
+    t.integer  "open"
+    t.integer  "close"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

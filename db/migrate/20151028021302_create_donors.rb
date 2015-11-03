@@ -6,10 +6,9 @@ class CreateDonors < ActiveRecord::Migration
       t.string   :street_address
       t.string   :city
       t.string   :state
-      t.integer  :zip
+      t.string   :zip
       t.string   :contact_name
-      t.integer  :phone
-      t.string   :user_email
+      t.string   :phone
 
       t.timestamps null: false
     end
