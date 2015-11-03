@@ -22,14 +22,15 @@ gem 'devise'
 # Use for environment variables
 gem 'dotenv-rails'
 
+# Use PostgreSQL for database management on Heroku
+gem 'pg'
 # Get better logs on Heroku
 gem 'rails_12factor'
 
-# Use PostgreSQL for database management on Heroku
-gem 'pg'
-
-# Use for email-to-text for transporters
+# Use for sending text notifications about donations
 gem 'twilio-ruby'
+# Use for google mapping the donation location and local shelters
+gem 'gmaps4rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -46,12 +47,4 @@ group :development, :test do
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-end
-
-group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  # gem 'spring'
 end
