@@ -4,22 +4,16 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :receiver
+  resources :receivers
 
-  resources :donor
+  resources :donors
 
-  resources :transporter
+  resources :transporters
 
-  post 'notifications/notify' => 'notifications#notify'
+  resources :donations
 
   # login  = new_user_session_path
   # logout = destroy_user_session_path
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

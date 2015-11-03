@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  donor_id: 1
+  address: MyString
+  city: MyString
+  zip: MyString
+  instructions: MyText
+
+two:
+  donor_id: 1
+  address: MyString
+  city: MyString
+  zip: MyString
+  instructions: MyText
