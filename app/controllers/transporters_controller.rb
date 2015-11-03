@@ -1,4 +1,5 @@
 class TransportersController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @transporters = Transporter.all
@@ -7,7 +8,7 @@ class TransportersController < ApplicationController
 
   def show
     # TODO and again... why the fridge do I need here???
-    @transporter = Tranporter.find_by(current_user.id)
+    # @transporter = Tranporter.find_by(current_user.id)
   end
 
   def create
@@ -16,15 +17,12 @@ class TransportersController < ApplicationController
     @transporter.user_id = current_user.id
     @transporter.save
 
-    redirect root_path
-  end
-
-  def destroy
+    # redirect root_path
   end
 
   private
-
   def transporter_params
     params.require(:transporter).permit(:name, :cell_phone, :open, :close)
   end
+
 end
