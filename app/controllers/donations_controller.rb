@@ -12,9 +12,9 @@ class DonationsController < ApplicationController
 
   def create
     if current_user
-      @donation = Donor.donations.create(donation_params) #TODO ask Gavin if url still works with this?
+      @donation = current_user.donations.create(donation_params)
     else
-      @donation = Donation.create(donation_params)
+      @donation = Donor.anonymous.donations.create(donation_params)
     end
 
     notifier = PickupNotice.new
