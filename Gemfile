@@ -22,6 +22,9 @@ gem 'devise'
 # Use for environment variables
 gem 'dotenv-rails'
 
+# Get better logs on Heroku
+gem 'rails_12factor'
+
 # Use PostgreSQL for database management on Heroku
 gem 'pg'
 
