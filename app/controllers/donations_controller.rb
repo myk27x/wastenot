@@ -6,7 +6,7 @@ class DonationsController < ApplicationController
   end
 
   def show
-    # TODO needs something filled in here???
+    @donation = Donation.find(params[:id])
     render json: @donation
   end
 
