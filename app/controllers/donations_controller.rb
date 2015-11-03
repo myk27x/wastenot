@@ -19,7 +19,9 @@ class DonationsController < ApplicationController
 
     notifier = PickupNotice.new
     Transporter.all.each do |transporter|
-      notifier.send_notice(transporter.cell_phone, donation_url(@donation))
+      if Transporter.available(transporter)
+        notifier.send_notice(transporter.cell_phone, donation_url(@donation))
+      end
     end
 
     redirect donation_path(@donation.id)
