@@ -7,7 +7,7 @@ class DonationsController < ApplicationController
 
   def show
     # TODO needs something filled in here???
-    render :json @donation
+    render json: @donation
   end
 
   def create
