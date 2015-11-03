@@ -1,6 +1,8 @@
 class TransportersController < ApplicationController
 
   def index
+    @transporters = Transporter.all
+    render json: @transporters
   end
 
   def show

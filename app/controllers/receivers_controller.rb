@@ -1,6 +1,8 @@
 class ReceiverController < ApplicationController
 
   def index
+    @receivers = Receiver.all
+    render json: @receivers
   end
 
   def show
