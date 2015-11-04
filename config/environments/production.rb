@@ -76,4 +76,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Override the default domain host to the host where the front-end exists.
+  # This way all the URLs that are generated will reference the FrontEnd app
+  # instead of our backend app.
+  config.routes.default_url_options[:host] = 'wastenot.io'
 end
