@@ -7,3 +7,7 @@ class Transporter < ActiveRecord::Base
     Time.now.hour.between?( transporter.open, transporter.close )
   end
 end
+
+# def available?
+#    Time.now.hour.between?(self.open, self.close)
+# end

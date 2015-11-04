@@ -30,6 +30,7 @@ gem 'rails_12factor'
 # Use for sending text notifications about donations
 gem 'twilio-ruby'
 # Use for google mapping the donation location and local shelters
+gem 'geocoder'
 gem 'gmaps4rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

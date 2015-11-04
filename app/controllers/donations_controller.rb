@@ -7,14 +7,19 @@ class DonationsController < ApplicationController
 
   def show
     @donation = Donation.find(params[:id])
-    render json: @donation
+    # render json: @donation
+    @hash = Gmaps4rails.build_markers(@donation) do |donation, marker|
+      marker.lat donation.latitude
+      marker.lng donation.longitude
+    end
   end
 
   def create
     if current_user
       @donation = current_user.donations.create(donation_params)
     else
-      @donation = Donor.anonymous.donations.create(donation_params)
+      # @donation = Donor.anonymous.donations.create(donation_params)
+      @donation = Donation.create(donation_params)
     end
 
     notifier = PickupNotice.new
@@ -24,7 +29,8 @@ class DonationsController < ApplicationController
       end
     end
 
-    redirect donation_path(@donation.id)
+    # redirect donation_path(@donation.id)
+    render donation_path(@donation.id)
   end
 
   private
