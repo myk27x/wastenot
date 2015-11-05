@@ -40,8 +40,9 @@ class DonationsController < ApplicationController
     if current_user
       @donation = current_user.donations.build(donation_params)
     else
-      @donation = Donor.anonymous.donations.build(donation_params)
-      # @donation = Donation.create(donation_params)
+      # @donation = Donor.anonymous.donations.build(donation_params)
+      # TODO donations doesn't work here? weeeeeiiirrdd...
+      @donation = Donation.create(donation_params)
     end
     @donation.save
 
