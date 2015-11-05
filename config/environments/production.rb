@@ -80,5 +80,5 @@ Rails.application.configure do
   # Override the default domain host to the host where the front-end exists.
   # This way all the URLs that are generated will reference the FrontEnd app
   # instead of our backend app.
-  config.action_controller.default_url_options[:host] = 'wastenot.io'
+  config.action_controller.default_url_options = { host: 'wastenot.io' }
 end
