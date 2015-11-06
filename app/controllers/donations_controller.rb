@@ -1,16 +1,39 @@
 class DonationsController < ApplicationController
 
-  # def index
-  #   @donations = Donation.all
-  #   render json: @donations
-  # end
+  def index
+    @donations = Donation.all
+    render json: @donations
+  end
 
   def show
     @donation = Donation.find(params[:id])
+    @donations = Array(@donation)
+    @receivers = Receiver.all
 
-    @hash = Gmaps4rails.build_markers(@donation) do |donation, marker|
-      marker.lat donation.latitude
-      marker.lng donation.longitude
+    donations_procs = @donations.map do |donation|
+      proc do |marker|
+        marker.lat donation.latitude
+        marker.lng donation.longitude
+        marker.infowindow "PICK-UP LOCATION"
+      end
+    end
+
+    receivers_procs = @receivers.map do |receiver|
+      proc do |marker|
+        if receiver.available?
+          marker.lat receiver.latitude
+          marker.lng receiver.longitude
+          marker.infowindow receiver.org_name
+        else
+          receiver
+        end
+      end
+    end
+
+    procs = receivers_procs + donations_procs
+
+    @hash = Gmaps4rails.build_markers(procs) do |marker_proc, marker|
+      marker_proc.call(marker)
     end
   end
 
@@ -28,13 +51,11 @@ class DonationsController < ApplicationController
     Transporter.all.each do |transporter|
       if Transporter.available(transporter)
         notifier.send_notice(transporter.cell_phone, donation_url(@donation))
-        ## TODO REMOVE DOMAIN!!!! , domain: "wastenot.com"
       end
     end
 
     # redirect donation_path(@donation.id)
-    # render donation_path(@donation.id)
-    render json: @donation
+    render donation_path(@donation.id)
   end
 
   private
