@@ -5,11 +5,9 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to # TODO user thing??? where???
-      # TODO ALERT? RESPONSE?
+      render status: 202
     else
-      redirect_to root_path
-      # TODO ALERT? RESPONSE?
+      redirect_to root_path, status: 400
     end
   end
 
