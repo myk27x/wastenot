@@ -7,7 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(name: 'Anonymous', email: 'noone@example.com', password: 'sekret27')
-Donor.create(user_id: 1, org_name: 'thin air', street_address: '123 Main St.', city: 'Who-ville', state: 'Speck', zip: '14303-327', contact_name: 'Mayor', phone: '+12-34-56-78-90')
+Donor.create(user_id: 1, org_name: 'Anonymous', street_address: '123 Main St.', city: 'Who-ville', state: 'Speck', zip: '14303-327', contact_name: 'Mayor', phone: '+12-34-56-78-90')
+Donation.create(donor_id:1, address: '100 2nd Ave N #150, St Petersburg, FL 33701', instructions: 'bring it')
 
 User.create(name: 'Michael', email: 'michael@example.com', password: 'reed1234')
 Donor.create(user_id: 2, org_name: 'Michael and Carly')
