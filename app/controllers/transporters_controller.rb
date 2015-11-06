@@ -19,6 +19,7 @@ class TransportersController < ApplicationController
       response status: 201
     else
       redirect_to root_path, status: 400
+    end
   end
 
   private
