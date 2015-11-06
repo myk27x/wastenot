@@ -16,8 +16,6 @@ ActiveRecord::Schema.define(version: 20151105204820) do
   create_table "donations", force: :cascade do |t|
     t.integer  "donor_id"
     t.string   "address"
-    t.string   "city"
-    t.string   "zip"
     t.text     "instructions"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -29,9 +27,6 @@ ActiveRecord::Schema.define(version: 20151105204820) do
     t.integer  "user_id"
     t.string   "org_name"
     t.string   "street_address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
     t.string   "contact_name"
     t.string   "phone"
     t.datetime "created_at",     null: false
@@ -42,11 +37,8 @@ ActiveRecord::Schema.define(version: 20151105204820) do
     t.integer  "user_id"
     t.string   "org_name"
     t.string   "street_address"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip"
     t.string   "contact_name"
-    t.integer  "phone"
+    t.string   "phone"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.boolean  "has_need"

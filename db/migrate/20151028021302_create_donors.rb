@@ -4,9 +4,6 @@ class CreateDonors < ActiveRecord::Migration
       t.integer  :user_id
       t.string   :org_name
       t.string   :street_address
-      t.string   :city
-      t.string   :state
-      t.string   :zip
       t.string   :contact_name
       t.string   :phone
 
