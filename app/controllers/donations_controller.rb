@@ -6,31 +6,10 @@ class DonationsController < ApplicationController
   end
 
   def show
-    @donation = Donation.find(params[:id])
-    @donations = Array(@donation)
+    @donations = Array(Donation.find(params[:id]))
     @receivers = Receiver.all
 
-    donations_procs = @donations.map do |donation|
-      proc do |marker|
-        marker.lat donation.latitude
-        marker.lng donation.longitude
-        marker.infowindow "PICK-UP LOCATION"
-      end
-    end
-
-    receivers_procs = @receivers.map do |receiver|
-      proc do |marker|
-        if receiver.available?
-          marker.lat receiver.latitude
-          marker.lng receiver.longitude
-          marker.infowindow receiver.org_name
-        else
-          receiver
-        end
-      end
-    end
-
-    procs = receivers_procs + donations_procs
+    procs = Mapping.donations_procs(@donations) + Mapping.receivers_procs(@receivers)
 
     @hash = Gmaps4rails.build_markers(procs) do |marker_proc, marker|
       marker_proc.call(marker)

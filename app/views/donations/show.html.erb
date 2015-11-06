@@ -15,6 +15,6 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 </script>
 <br>
 <div>
-  <div>Special Instructions from: <strong><%= @donation.donor.org_name %></strong></div>
-  <p style="width: 800px;"><%= @donation.instructions%></p>
+  <div>Special Instructions from: <strong><%= @donations[0].donor.org_name %></strong></div>
+  <p style="width: 800px;"><%= @donations[0].instructions%></p>
 </div>
