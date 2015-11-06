@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  post '/users' => 'users#create'
+
   resources :receivers
 
   resources :donors
@@ -9,9 +11,6 @@ Rails.application.routes.draw do
   resources :transporters
 
   resources :donations
-
-  # login  = new_user_session_path
-  # logout = destroy_user_session_path
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
