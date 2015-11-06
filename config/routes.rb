@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations'}
-
   root to: "home#index"
+
+  post '/users' => 'users#create'
+
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   resources :receivers
 
@@ -11,9 +14,6 @@ Rails.application.routes.draw do
   resources :transporters
 
   resources :donations
-
-  # login  = new_user_session_path
-  # logout = destroy_user_session_path
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

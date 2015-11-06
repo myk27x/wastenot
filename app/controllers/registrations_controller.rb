@@ -1,3 +1,3 @@
-class RegistrationsController < Devise::RegistrationsController
+class RegistrationsController < ApplicationController
     respond_to :json, :html
 end
