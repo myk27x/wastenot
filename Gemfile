@@ -5,6 +5,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.4'
 gem 'rack-cors', :require => 'rack/cors'
 
+# Use bcrypt for authentication instead of Devise
+gem 'bcrypt', '~> 3.1.7'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
