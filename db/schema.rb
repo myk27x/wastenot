@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104031631) do
+ActiveRecord::Schema.define(version: 20151105204820) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "donor_id"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20151104031631) do
     t.integer  "open"
     t.integer  "close"
     t.text     "delivery_instructions"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "transporters", force: :cascade do |t|
