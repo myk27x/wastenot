@@ -1,13 +1,13 @@
 class DonationsController < ApplicationController
 
-  def index
-    @donations = Donation.all
-    render json: @donations
-  end
+  # def index
+  #   @donations = Donation.all
+  #   render json: @donations
+  # end
 
   def show
     @donation = Donation.find(params[:id])
-    # render json: @donation
+
     @hash = Gmaps4rails.build_markers(@donation) do |donation, marker|
       marker.lat donation.latitude
       marker.lng donation.longitude
@@ -33,7 +33,8 @@ class DonationsController < ApplicationController
     end
 
     # redirect donation_path(@donation.id)
-    render donation_path(@donation.id)
+    # render donation_path(@donation.id)
+    render json: @donation
   end
 
   private
