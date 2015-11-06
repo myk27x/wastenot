@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       render status: 202
     else
-      redirect_to :back, status: 400
+      redirect_to root_path, status: 400
     end
   end
 

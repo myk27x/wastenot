@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   post '/users' => 'users#create'
 
-  post '/users/sign_in' => 'sessions#create'
+  post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
   resources :receivers
