@@ -10,22 +10,23 @@ class DonationsController < ApplicationController
     @donations = Array(@donation)
     @receivers = Receiver.all
 
-    receivers_procs = @receivers.map do |receiver|
-      proc do |marker|
-        marker.lat receiver.latitude
-        marker.lng receiver.longitude
-        # if receiver.available?
-        #   marker.infowindow = "I'm a shelter and available"
-        # else
-        #   marker.infowindow = "I'm a shelter and I'm closed"
-        # end
-      end
-    end
-
     donations_procs = @donations.map do |donation|
       proc do |marker|
         marker.lat donation.latitude
         marker.lng donation.longitude
+        marker.infowindow "PICK-UP LOCATION"
+      end
+    end
+
+    receivers_procs = @receivers.map do |receiver|
+      proc do |marker|
+        if receiver.available?
+          marker.lat receiver.latitude
+          marker.lng receiver.longitude
+          marker.infowindow receiver.org_name
+        else
+          receiver
+        end
       end
     end
 
