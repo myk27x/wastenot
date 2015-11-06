@@ -1,4 +1,5 @@
 class DonationsController < ApplicationController
+  before_filter :authorize, only: [:show] 
 
   def index
     @donations = Donation.all
@@ -17,28 +18,27 @@ class DonationsController < ApplicationController
   end
 
   def create
-    if current_user
-      @donation = current_user.donations.build(donation_params)
+    if current_user.donor
+      @donation = current_user.donor.donations.build(donation_params)
     else
-      # @donation = Donor.anonymous.donations.build(donation_params)
-      # TODO donations doesn't work here? weeeeeiiirrdd...
-      @donation = Donation.create(donation_params)
+      @donation = Donor.anonymous.donations.build(donation_params)
     end
-    @donation.save
 
-    notifier = PickupNotice.new
-    Transporter.all.each do |transporter|
-      if Transporter.available(transporter)
-        notifier.send_notice(transporter.cell_phone, donation_url(@donation))
+    if @donation.save
+      notifier = PickupNotice.new
+      Transporter.all.each do |transporter|
+        if Transporter.available(transporter)
+          notifier.send_notice(transporter.cell_phone, donation_url(@donation))
+        end
       end
+      render status: 200
+    else
+      redirect_to :back, status: 400
     end
-
-    # redirect donation_path(@donation.id)
-    render donation_path(@donation.id)
   end
 
   private
   def donation_params
-    params.require(:donation).permit(:address, :city, :zip, :instructions)
+    params.require(:donation).permit(:address, :instructions)
   end
 end

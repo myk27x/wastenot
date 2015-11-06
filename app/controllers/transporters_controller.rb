@@ -1,5 +1,5 @@
 class TransportersController < ApplicationController
-  before_action :authenticate_user!
+  before_filter :authorize, only: [:show]
 
   def index
     @transporters = Transporter.all
@@ -7,17 +7,18 @@ class TransportersController < ApplicationController
   end
 
   def show
-    # TODO and again... why the fridge do I need here???
-    # @transporter = Tranporter.find_by(current_user.id)
+    @transporter = Tranporter.find(current_user.id)
+    render json: @transporter
   end
 
   def create
     @transporter = Transporter.new(transporter_params)
-
     @transporter.user_id = current_user.id
-    @transporter.save
 
-    # redirect root_path
+    if @transporter.save
+      response status: 201
+    else
+      redirect_to root_path, status: 400
   end
 
   private

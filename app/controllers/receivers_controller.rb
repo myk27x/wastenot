@@ -1,4 +1,5 @@
 class ReceiverController < ApplicationController
+  before_filter :authorize, only: [:show]
 
   def index
     @receivers = Receiver.all
@@ -6,23 +7,19 @@ class ReceiverController < ApplicationController
   end
 
   def show
-    # TODO add something here? hmm...???
     @receiver =  Receiver.find_by(current_user.id)
+    render json: @receiver
   end
 
   def create
     @receiver = Receiver.new(receiver_params)
     @receiver.user_id    = current_user.id
-    @receiver.user_email = current_user.email
-    @receiver.save
 
-    redirect root_path
-  end
-
-  def update
-    @receiver.update(receiver_params)
-
-    redirect receiver_path(current_user.id)
+    if @receiver.save
+      render status: 201
+    else
+      redirect_to :back, status: 400
+    end
   end
 
   private

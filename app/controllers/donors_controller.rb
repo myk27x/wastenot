@@ -1,4 +1,5 @@
 class DonorController < ApplicationController
+  before_filter :authorize, only: [:show]
 
   def index
     @donors = Donor.all
@@ -6,16 +7,19 @@ class DonorController < ApplicationController
   end
 
   def show
-    @donor = Donor.find_by(current_user.id)
+    @donor = Donor.find(current_user.id)
+    render json: @donor
   end
 
   def create
     @donor = Donor.new(donor_params)
     @donor.user_id    = current_user.id
-    @donor.user_email = current_user.email
-    @donor.save
 
-    redirect root_path
+    if @donor.save
+      render status: 201
+    else
+      redirect_to :back, status: 400
+    end
   end
 
   private
