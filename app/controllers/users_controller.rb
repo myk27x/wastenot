@@ -5,8 +5,10 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       redirect_to # TODO user thing??? where???
+      # TODO ALERT? RESPONSE?
     else
       redirect_to root_path
+      # TODO ALERT? RESPONSE?
     end
   end
 
