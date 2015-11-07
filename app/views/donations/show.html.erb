@@ -14,7 +14,18 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 });
 </script>
 <br>
-<div>
+<div id="instructions">
   <div>Special Instructions from: <strong><%= @donations[0].donor.org_name %></strong></div>
-  <p style="width: 800px;"><%= @donations[0].instructions%></p>
+  <p><%= @donations[0].instructions%></p>
+</div>
+<div id="button_pocket">
+  <div class="spacer"></div>
+  <a href="" class="button">
+      <p>Take this pick-up?</p>
+  </a>
+  <div class="spacer_gap"><p>or</p></div>
+  <a href="" class="button">
+      <p>Maybe next time...?</p>
+  </a>
+  <div class="spacer"></div>
 </div>
