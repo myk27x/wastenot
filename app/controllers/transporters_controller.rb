@@ -7,13 +7,13 @@ class TransportersController < ApplicationController
   end
 
   def show
-    @transporter = Tranporter.find(current_user.id)
+    @transporter = Tranporter.find(current_user(params[:id]))
     render json: @transporter
   end
 
   def create
     @transporter = Transporter.new(transporter_params)
-    @transporter.user_id = current_user.id
+    @transporter.user_id = current_user(params[:id])
 
     if @transporter.save
       response status: 201

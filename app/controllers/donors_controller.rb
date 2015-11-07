@@ -7,13 +7,13 @@ class DonorController < ApplicationController
   end
 
   def show
-    @donor = Donor.find(current_user.id)
+    @donor = Donor.find(current_user(params[:id]))
     render json: @donor
   end
 
   def create
     @donor = Donor.new(donor_params)
-    @donor.user_id    = current_user.id
+    @donor.user_id    = current_user(params[:id])
 
     if @donor.save
       render status: 201
@@ -25,7 +25,7 @@ class DonorController < ApplicationController
   private
 
   def donor_params
-  params.require(:donor).permit(:org_name, :street_address, :city, :state, :zip, :contact_name, :phone)
+  params.require(:donor).permit(:org_name, :street_address, :contact_name, :phone)
   end
 
 end

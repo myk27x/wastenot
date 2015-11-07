@@ -7,13 +7,13 @@ class ReceiverController < ApplicationController
   end
 
   def show
-    @receiver =  Receiver.find_by(current_user.id)
+    @receiver =  Receiver.find_by(current_user(params[:id]))
     render json: @receiver
   end
 
   def create
     @receiver = Receiver.new(receiver_params)
-    @receiver.user_id    = current_user.id
+    @receiver.user_id    = current_user(params[:id])
 
     if @receiver.save
       render status: 201
@@ -24,7 +24,7 @@ class ReceiverController < ApplicationController
 
   private
   def receiver_params
-  params.require(:receiver).permit(:org_name, :street_address, :city, :state, :zip, :contact_name, :phone, :has_need, :open, :close, :delivery_instructions)
+  params.require(:receiver).permit(:org_name, :street_address, :contact_name, :phone, :has_need, :open, :close, :delivery_instructions)
   end
 
 end

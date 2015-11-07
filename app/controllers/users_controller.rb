@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authorize, only: :show
 
   def show
-    user = User.find(current_user.id)
+    user = User.find(current_user(params[:id]))
     render json: user
   end
 
