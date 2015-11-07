@@ -31,7 +31,7 @@ class DonationsController < ApplicationController
       #     notifier.send_notice(transporter.cell_phone, donation_url(@donation))
       #   end
       # end
-      render status: 200
+      render json: @donation, status: 200
     else
       redirect_to :back, status: 400
     end
