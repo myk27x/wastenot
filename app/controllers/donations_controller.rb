@@ -10,7 +10,7 @@ class DonationsController < ApplicationController
     @donations = Array(Donation.find(params[:id]))
     @receivers = Receiver.all
 
-    procs = Mapping.donations_procs(@donations) + Mapping.receivers_procs(@receivers)
+    procs = Mapping.receivers_procs(@receivers) + Mapping.donations_procs(@donations)
 
     @hash = Gmaps4rails.build_markers(procs) do |marker_proc, marker|
       marker_proc.call(marker)
