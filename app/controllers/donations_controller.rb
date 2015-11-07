@@ -25,12 +25,12 @@ class DonationsController < ApplicationController
     end
 
     if @donation.save
-      notifier = PickupNotice.new
-      Transporter.all.each do |transporter|
-        if Transporter.available(transporter)
-          notifier.send_notice(transporter.cell_phone, donation_url(@donation))
-        end
-      end
+      # notifier = PickupNotice.new
+      # Transporter.all.each do |transporter|
+      #   if Transporter.available(transporter)
+      #     notifier.send_notice(transporter.cell_phone, donation_url(@donation))
+      #   end
+      # end
       render status: 200
     else
       redirect_to :back, status: 400
