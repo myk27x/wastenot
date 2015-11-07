@@ -1,5 +1,5 @@
 class TransportersController < ApplicationController
-  before_filter :authorize, only: [:show]
+  before_filter :authorize, only: :show
 
   def index
     @transporters = Transporter.all

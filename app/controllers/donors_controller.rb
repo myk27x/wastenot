@@ -1,5 +1,5 @@
 class DonorController < ApplicationController
-  before_filter :authorize, only: [:show]
+  before_filter :authorize, only: :show
 
   def index
     @donors = Donor.all

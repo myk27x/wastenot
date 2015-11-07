@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authorize, only: [:show]
+  before_filter :authorize, only: :show
 
   def show
     @user = User.find(current_user.id)
