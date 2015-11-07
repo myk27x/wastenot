@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   post '/users' => 'users#create'
-
+  get '/user/:id' => 'users#show'
+  
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
