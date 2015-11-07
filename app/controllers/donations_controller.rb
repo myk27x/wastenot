@@ -27,7 +27,7 @@ class DonationsController < ApplicationController
     if @donation.save
       notifier = PickupNotice.new
       Transporter.all.each do |transporter|
-        if Transporter.available(transporter)
+        if transporter.available?
           notifier.send_notice(transporter.cell_phone, donation_url(@donation))
         end
       end
