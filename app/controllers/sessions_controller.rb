@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       # render json: session, status: 202
-      render status: 202
+      render nothing: true
     else
-      redirect_to root_path, status: 400
+      render nothing: true, status: 400
     end
   end
 
