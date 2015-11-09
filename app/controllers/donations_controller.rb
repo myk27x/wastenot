@@ -7,6 +7,7 @@ class DonationsController < ApplicationController
   end
 
   def show
+    puts params[:id]
     @donations = Array(Donation.find(params[:id]))
     @receivers = Receiver.all
 
