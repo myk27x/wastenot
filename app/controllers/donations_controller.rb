@@ -18,8 +18,9 @@ class DonationsController < ApplicationController
   end
 
   def create
-    if current_user(donation_params[:id])#.donor != nil
-      @donation = current_user.donor.donations.build(donation_params)
+    user = User.find(donation_params[:id])
+    if user.donor != nil
+      @donation = user.donor.donations.build(donation_params)
     else
       @donation = Donor.anonymous.donations.build(donation_params)
     end
