@@ -18,8 +18,7 @@ class DonationsController < ApplicationController
   end
 
   def create
-    puts params[:id]
-    if current_user(params[:id])
+    if current_user(user_params).donor != nil
       @donation = current_user.donor.donations.build(donation_params)
     else
       @donation = Donor.anonymous.donations.build(donation_params)
@@ -41,5 +40,9 @@ class DonationsController < ApplicationController
   private
   def donation_params
     params.require(:donation).permit(:address, :instructions)
+  end
+
+  def user_params
+    params.require(:user).permit(:id)
   end
 end
