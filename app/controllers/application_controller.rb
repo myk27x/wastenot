@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  respond_to :json, :html
   # before_filter :authorize
 
   def current_user(user_id)
@@ -7,6 +8,6 @@ class ApplicationController < ActionController::Base
   # helper_method :current_user
 
   def authorize
-    redirect_to root_path, status: 401 unless current_user
+    redirect_to root_path, status: 401 #unless current_user
   end
 end
