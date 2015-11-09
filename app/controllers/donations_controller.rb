@@ -7,7 +7,6 @@ class DonationsController < ApplicationController
   end
 
   def show
-    puts params[:id]
     @donations = Array(Donation.find(params[:id]))
     @receivers = Receiver.all
 
@@ -19,6 +18,7 @@ class DonationsController < ApplicationController
   end
 
   def create
+    puts params[:id]
     if current_user(params[:id])
       @donation = current_user.donor.donations.build(donation_params)
     else

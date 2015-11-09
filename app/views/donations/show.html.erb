@@ -6,26 +6,41 @@
 </div>
 
 <script>
+$(document).ready(function(){
+  $('#accept').click(function()
+    {
+      console.log('I pushed the accept button...');
+      $('#button_pocket').hide().after('<%= escape_javascript render("accepted_by") %>');
+    })
+  $('#decline').click(function()
+    {
+      console.log('I pushed the decline button...');
+      $('#container').hide().after('<%= escape_javascript render("declined") %>');
+    })
+});
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   markers = handler.addMarkers(<%=raw @hash.to_json %>);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
+  console.log('I have loaded the map')
 });
 </script>
 <br>
-<div id="instructions">
-  <div>Special Instructions from: <strong><%= @donations[0].donor.org_name %></strong></div>
-  <p><%= @donations[0].instructions%></p>
-</div>
-<div id="button_pocket">
-  <div class="spacer"></div>
-  <a href="" class="button">
-      <p>Take this pick-up?</p>
-  </a>
-  <div class="spacer_gap"><p>or</p></div>
-  <a href="" class="button">
-      <p>Maybe next time...?</p>
-  </a>
-  <div class="spacer"></div>
+<div id="container">
+  <div id="instructions">
+    <div>Special Instructions from: <strong><%= @donations[0].donor.org_name %></strong></div>
+    <p><%= @donations[0].instructions%></p>
+  </div>
+  <div id="button_pocket">
+    <div class="spacer"></div>
+    <a href="#" class="button" id="accept">
+      Take this pick-up?
+    </a>
+    <div class="spacer_gap"><p>or</p></div>
+    <a href="#" class="button" id="decline">
+      Maybe next time...?
+    </a>
+    <div class="spacer"></div>
+  </div>
 </div>
