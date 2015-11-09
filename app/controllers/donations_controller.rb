@@ -18,11 +18,11 @@ class DonationsController < ApplicationController
   end
 
   def create
-    user = User.find(donation_params[:id])
+    user = User.find(user_params)
     if user.donor != nil
-      @donation = user.donor.donations.build(donation_params[:address, :instructions])
+      @donation = user.donor.donations.build(donation_params)
     else
-      @donation = Donor.anonymous.donations.build(donation_params[:address, :instructions])
+      @donation = Donor.anonymous.donations.build(donation_params)
     end
 
     if @donation.save
@@ -40,6 +40,10 @@ class DonationsController < ApplicationController
 
   private
   def donation_params
-    params.require(:donation).permit(:id, :address, :instructions)
+    params.require(:donation).permit(:address, :instructions)
+  end
+
+  def user_params
+    params.require(:donation).permit(:id)
   end
 end
