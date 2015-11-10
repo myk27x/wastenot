@@ -30,9 +30,7 @@ module Mapping
         marker.lat receiver.latitude
         marker.lng receiver.longitude
         marker.picture(url: "http://www.google.com/mapfiles/marker.png", width:32, height: 32)
-        marker.infowindow %{#{receiver.org_name}<br>
-                            <br>
-                            Open from: #{receiver.open} - #{receiver.close}}
+        marker.infowindow %{#{receiver.org_name}<br><br>Open from: #{receiver.open}:00 a.m. - #{receiver.close - 12}:00 p.m.}
       end
     end
   end

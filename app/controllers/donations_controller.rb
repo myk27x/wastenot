@@ -37,14 +37,10 @@ class DonationsController < ApplicationController
 
   private
   def find_current_user
-    @user = User.find(current_user_params)
+    @user = User.find(current_user)
   end
 
   def donation_params
     params.require(:donation).permit(:address, :instructions)
-  end
-
-  def current_user_params
-    params.require(:donation).permit(:id)
   end
 end

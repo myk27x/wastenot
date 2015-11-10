@@ -8,16 +8,16 @@ class TransportersController < ApplicationController
   # end
 
   def show
-    @transporter = Tranporter.find(current_user(params[:id]))
+    @transporter = current_user.transporter
     render json: @transporter
   end
 
   def create
     @transporter = Transporter.new(transporter_params)
-    @transporter.user_id = current_user(params[:id])
+    @transporter.user_id = current_user.id
 
     if @transporter.save
-      response status: 201
+      response json: @transporter, status: 201
     else
       redirect_to :back, status: 400
     end
