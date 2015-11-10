@@ -8,9 +8,13 @@ class DonationsController < ApplicationController
 
   def show
     @donations = Array(Donation.find(params[:id]))
-    @receivers = Receiver.all
+    @receivers = Receiver.all.select { |receiver| receiver.available? }
 
-    procs = Mapping.receivers_procs(@receivers)# + Mapping.donations_procs(@donations)
+    if @receivers != nil
+      procs = Mapping.receivers_procs(@receivers) + Mapping.donations_procs(@donations)
+    else
+      procs = Mapping.donations_procs(@donations)
+    end
 
     @hash = Gmaps4rails.build_markers(procs) do |marker_proc, marker|
       marker_proc.call(marker)

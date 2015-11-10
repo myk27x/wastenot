@@ -13,11 +13,9 @@ class Mapping
   def self.receivers_procs(receivers)
     receivers.map do |receiver|
       proc do |marker|
-        if receiver.available?
-          marker.lat receiver.latitude
-          marker.lng receiver.longitude
-          marker.infowindow receiver.org_name
-        end
+        marker.lat receiver.latitude
+        marker.lng receiver.longitude
+        marker.infowindow receiver.org_name
       end
     end
   end
