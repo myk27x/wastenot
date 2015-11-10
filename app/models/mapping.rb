@@ -1,6 +1,7 @@
-class Mapping
+module Mapping
+  module_function
 
-  def self.make_map_for(receiver, donation)
+  def make_map_for(receiver, donation)
     procs = if receiver.empty?
               self.donations_procs(donation)
             else
@@ -12,22 +13,26 @@ class Mapping
     end
   end
 
-  def self.donations_procs(donations)
+  def donations_procs(donations)
     donations.map do |donation|
       proc do |marker|
         marker.lat donation.latitude
         marker.lng donation.longitude
+        marker.picture(url: "http://www.google.com/mapfiles/dd-start.png", width:32, height: 32)
         marker.infowindow "PICK-UP LOCATION"
       end
     end
   end
 
-  def self.receivers_procs(receivers)
+  def receivers_procs(receivers)
     receivers.map do |receiver|
       proc do |marker|
         marker.lat receiver.latitude
         marker.lng receiver.longitude
-        marker.infowindow receiver.org_name
+        marker.picture(url: "http://www.google.com/mapfiles/marker.png", width:32, height: 32)
+        marker.infowindow %{#{receiver.org_name}<br>
+                            <br>
+                            Open from: #{receiver.open} - #{receiver.close}}
       end
     end
   end
