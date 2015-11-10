@@ -1,11 +1,11 @@
 class Mapping
 
   def self.make_map_for(receiver, donation)
-    if @receivers != nil
-      procs = self.receivers_procs(receiver) + self.donations_procs(donation)
-    else
-      procs = self.donations_procs(donation)
-    end
+    procs = if receiver.empty?
+              self.donations_procs(donation)
+            else
+              self.receivers_procs(receiver) + self.donations_procs(donation)
+            end
 
     Gmaps4rails.build_markers(procs) do |marker_proc, marker|
       marker_proc.call(marker)
