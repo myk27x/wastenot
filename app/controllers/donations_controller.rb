@@ -11,7 +11,8 @@ class DonationsController < ApplicationController
   def show
     @donations = Array(Donation.find(params[:id]))
     @receivers = Receiver.all.select { |receiver| receiver.available? }
-    @hash      = Mapping.make_map_for(@receivers, @donations)
+    @mapping   = Mapping.make_map_for(@receivers, @donations)
+    Rails.logger.info ["MAPPING", @mapping].inspect
   end
 
   def create

@@ -1,14 +1,16 @@
-class DonorController < ApplicationController
+class DonorsController < ApplicationController
   # before_filter :authorize, only: :show
 
-  # TODO implement view to display all donations
+  # # TODO implement view to display all donations
   # def index
-  #   @donors = Donor.all
+  #   @donors = current_user.donors.all
   #   render json: @donors
   # end
 
+  # GET /donors
   def show
-    @donor = Donor.find_by_user_id(@user.id)
+    # @donor = Donor.find_by_user_id(@user.id)
+    @donor = current_user.donor
     render json: @donor
   end
 
