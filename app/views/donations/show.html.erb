@@ -18,6 +18,7 @@
         console.log('I pushed the decline button...');
         $('#container').hide().after('<%= escape_javascript render("declined") %>');
       })
+    });
 
       console.log('I am trying to load the map')
     handler = Gmaps.build('Google');
@@ -27,7 +28,6 @@
       handler.fitMapToBounds();
       console.log('I have loaded the map')
     });
-  });
 </script>
 
 <br>
