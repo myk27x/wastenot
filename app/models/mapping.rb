@@ -17,8 +17,6 @@ class Mapping
           marker.lat receiver.latitude
           marker.lng receiver.longitude
           marker.infowindow receiver.org_name
-        else
-          receiver
         end
       end
     end
