@@ -6,26 +6,28 @@
 </div>
 
 <script>
-$(document).ready(function(){
-  $('#accept').click(function()
-    {
-      console.log('I pushed the accept button...');
-      $('#button_pocket').hide().after('<%= escape_javascript render("accepted_by") %>');
-    })
-  $('#decline').click(function()
-    {
-      console.log('I pushed the decline button...');
-      $('#container').hide().after('<%= escape_javascript render("declined") %>');
-    })
-});
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  console.log('I have loaded the map')
-});
+  $(document).ready(function(){
+    $('#accept').click(function()
+      {
+        console.log('I pushed the accept button...');
+        $('#button_pocket').hide().after('<%= escape_javascript render("accepted_by") %>');
+      })
+    $('#decline').click(function()
+      {
+        console.log('I pushed the decline button...');
+        $('#container').hide().after('<%= escape_javascript render("declined") %>');
+      })
+
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      console.log('I have loaded the map')
+    });
+  });
 </script>
+
 <br>
 <div id="container">
   <div id="instructions">
@@ -37,7 +39,9 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     <a href="#" class="button" id="accept">
       Take this pick-up?
     </a>
-    <div class="spacer_gap"><p>or</p></div>
+    <div class="spacer_gap">
+      <p>or</p>
+    </div>
     <a href="#" class="button" id="decline">
       Maybe next time...?
     </a>
