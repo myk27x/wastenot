@@ -1,4 +1,4 @@
-class ReceiverController < ApplicationController
+class ReceiversController < ApplicationController
   # before_filter :authorize, only: :show
 
   # TODO implement view to display all donations

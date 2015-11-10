@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   respond_to :json, :html
 
-  def current_user # (user_id)
-    @current_user ||= User.find(session[:user_id])
+  # INSECURE; BUT OKAY FOR DEMO DAY -- JASON
+  def current_user
+    @current_user ||= User.find(params[:user_id])
   end
 
   # TODO This needs to be remedied ASAP before going live
