@@ -1,5 +1,5 @@
 class DonationsController < ApplicationController
-  before_filter :authorize(current_user_params), only: :show
+  # before_action :authorize, only: :show
 
   def index
     @donations = Donation.all
