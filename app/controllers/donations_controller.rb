@@ -1,5 +1,5 @@
 class DonationsController < ApplicationController
-  # before_filter :authorize, only: :show
+  before_filter :authorize(current_user_params), only: :show
 
   def index
     @donations = Donation.all
@@ -18,7 +18,7 @@ class DonationsController < ApplicationController
   end
 
   def create
-    user = User.find(user_params[:id])
+    user = User.find(current_user_params)
     if user.donor != nil
       @donation = user.donor.donations.build(donation_params)
     else
@@ -43,7 +43,7 @@ class DonationsController < ApplicationController
     params.require(:donation).permit(:address, :instructions)
   end
 
-  def user_params
+  def current_user_params
     params.require(:donation).permit(:id)
   end
 end
