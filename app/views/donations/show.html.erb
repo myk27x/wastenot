@@ -7,26 +7,20 @@
 </div>
 
 <script>
-  // $(document).ready(function(){
-  //   $('#accept').click(function()
-  //     {
-  //       console.log('I pushed the accept button...');
-  //       $('#button_pocket').hide().after('<%= escape_javascript render("accepted_by") %>');
-  //     })
-  //   $('#decline').click(function()
-  //     {
-  //       console.log('I pushed the decline button...');
-  //       $('#container').hide().after('<%= escape_javascript render("declined") %>');
-  //     })
-  //   });
+  $(document).ready(function(){
+    $('#accept').click(function(){
+        $('#button_pocket').hide().after('<%= escape_javascript render("accepted_by") %>');
+      })
+    $('#decline').click(function(){
+        $('#container').hide().after('<%= escape_javascript render("declined") %>');
+      })
+    });
 
-      console.log('I am trying to load the map')
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
       markers = handler.addMarkers(<%=raw @hash.to_json %>);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-      console.log('I have loaded the map')
     });
 </script>
 

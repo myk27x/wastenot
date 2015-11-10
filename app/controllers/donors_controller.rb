@@ -1,19 +1,20 @@
 class DonorController < ApplicationController
-  before_filter :authorize, only: :show
+  # before_filter :authorize, only: :show
 
-  def index
-    @donors = Donor.all
-    render json: @donors
-  end
+  # TODO implement view to display all donations
+  # def index
+  #   @donors = Donor.all
+  #   render json: @donors
+  # end
 
   def show
-    @donor = Donor.find(current_user(params[:id]))
+    @donor = Donor.find_by_user_id(@user.id)
     render json: @donor
   end
 
   def create
     @donor = Donor.new(donor_params)
-    @donor.user_id    = current_user(params[:id])
+    @donor.user_id = @user.id
 
     if @donor.save
       render status: 201
@@ -23,9 +24,11 @@ class DonorController < ApplicationController
   end
 
   private
-
   def donor_params
   params.require(:donor).permit(:org_name, :street_address, :contact_name, :phone)
   end
 
+  def current_user_params
+    params.require(:donor).permit(:id)
+  end
 end

@@ -1,10 +1,11 @@
 class TransportersController < ApplicationController
-  before_filter :authorize, only: :show
+  # before_filter :authorize, only: :show
 
-  def index
-    @transporters = Transporter.all
-    render json: @transporters
-  end
+  # TODO implement view to display all donations
+  # def index
+  #   @transporters = Transporter.all
+  #   render json: @transporters
+  # end
 
   def show
     @transporter = Tranporter.find(current_user(params[:id]))
@@ -18,7 +19,7 @@ class TransportersController < ApplicationController
     if @transporter.save
       response status: 201
     else
-      redirect_to root_path, status: 400
+      redirect_to :back, status: 400
     end
   end
 

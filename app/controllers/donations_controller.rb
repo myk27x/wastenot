@@ -1,32 +1,24 @@
 class DonationsController < ApplicationController
   # before_action :authorize, only: :show
+  before_action :find_current_user, only: :create
 
-  def index
-    @donations = Donation.all
-    render json: @donations
-  end
+  # TODO implement view to display all donations
+  # def index
+  #   @donations = Donation.all
+  #   render json: @donations
+  # end
 
   def show
     @donations = Array(Donation.find(params[:id]))
     @receivers = Receiver.all.select { |receiver| receiver.available? }
-
-    if @receivers != nil
-      procs = Mapping.receivers_procs(@receivers) + Mapping.donations_procs(@donations)
-    else
-      procs = Mapping.donations_procs(@donations)
-    end
-
-    @hash = Gmaps4rails.build_markers(procs) do |marker_proc, marker|
-      marker_proc.call(marker)
-    end
+    @hash      = Mapping.make_map_for(@receivers, @donations)
   end
 
   def create
-    user = User.find(current_user_params)
-    if user.donor != nil
-      @donation = user.donor.donations.build(donation_params)
-    else
+    if @user.donor.equal?(nil)
       @donation = Donor.anonymous.donations.build(donation_params)
+    else
+      @donation = @user.donor.donations.build(donation_params)
     end
 
     if @donation.save
@@ -43,6 +35,10 @@ class DonationsController < ApplicationController
   end
 
   private
+  def find_current_user
+    @user = User.find(current_user_params)
+  end
+
   def donation_params
     params.require(:donation).permit(:address, :instructions)
   end

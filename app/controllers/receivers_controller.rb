@@ -1,10 +1,11 @@
 class ReceiverController < ApplicationController
-  before_filter :authorize, only: :show
+  # before_filter :authorize, only: :show
 
-  def index
-    @receivers = Receiver.all
-    render json: @receivers
-  end
+  # TODO implement view to display all donations
+  # def index
+  #   @receivers = Receiver.all
+  #   render json: @receivers
+  # end
 
   def show
     @receiver =  Receiver.find_by(current_user(params[:id]))
