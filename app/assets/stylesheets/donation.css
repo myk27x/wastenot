@@ -1,11 +1,16 @@
+#map {
+  margin-left: 55px;
+  margin-right: 55px;
+  margin-top: 25px;
+}
+
 #instructions {
-  width: 800px;
-  /*margin-left: 20px;*/
+  width: 100%;
   text-align: center;
 }
 
 #button_pocket{
-  width: 800px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -38,6 +43,6 @@
 }
 
 #message {
-  width: 800px;
+  width: 100%;
   text-align: center;
 }
