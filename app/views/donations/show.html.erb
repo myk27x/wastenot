@@ -29,8 +29,7 @@
   <div id="instructions">
     <div>Special Instructions from: <strong><%= @donations[0].donor.org_name %></strong></div>
     <p><%= @donations[0].instructions%></p>
-    <p><%= @donations[0].donor.contact_name%></p>
-    <p><%= @donations[0].donor.phone%></p>
+    <p>Contact <%= @donations[0].donor.contact_name%> at <%= @donations[0].donor.phone%> with any questions.</p>
   </div>
   <div id="button_pocket">
     <div class="spacer"></div>
