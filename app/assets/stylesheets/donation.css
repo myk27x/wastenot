@@ -75,6 +75,10 @@ button:hover {
     border-bottom: solid #888 2px;
   }
 
+  #button_pocket {
+    bottom: 5px;
+  }
+
   button {
     font-size: 0.6em;
     margin: 0px;
