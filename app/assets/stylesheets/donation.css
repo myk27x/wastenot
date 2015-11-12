@@ -69,15 +69,12 @@ button:hover {
   }
 
   #instructions div:nth-child(2) {
-    border-top: solid black 2px;
-    border-bottom: solid black 2px;
+    margin: 7px 0;
+    padding: 7px 0;
+    border-top: solid #888 2px;
+    border-bottom: solid #888 2px;
   }
 
-  #button_pocket {
-    width: 100%;
-    position: absolute;
-    bottom: 5px;
-  }
   button {
     font-size: 0.6em;
     margin: 0px;
