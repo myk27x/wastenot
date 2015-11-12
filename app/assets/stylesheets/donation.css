@@ -41,6 +41,7 @@ button:hover {
 
 #message {
   width: 100%;
+  text-align: center;
 }
 
 .delivery-instructions {
@@ -54,7 +55,7 @@ button:hover {
 
   #map {
     margin: 0px;
-    height: 300px;
+    height: 250px;
   }
 
   .delivery-instructions {
