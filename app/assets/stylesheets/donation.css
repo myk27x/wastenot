@@ -1,3 +1,8 @@
+body {
+  height: auto;
+  margin-bottom: 130px;
+}
+
 #map {
   margin: 25px 55px 0px 55px;
   width: auto;
@@ -30,7 +35,7 @@ button {
   color: black;
 }
 
-#button_pocket button:hover {
+button:hover {
   background-color: #BBB;
 }
 
@@ -40,10 +45,6 @@ button {
 
 .delivery-instructions {
   max-width: 400px;
-}
-
-#button_pocket p {
-  display: inline;
 }
 
 @media(max-width: 700px) {
@@ -61,18 +62,27 @@ button {
   }
 
   #container {
-    margin: 10px;
+    height: auto;
+    margin-top: 10px;
     font-size: 22px;
   }
 
+  #instructions div:nth-child(2) {
+    border-top: solid black 2px;
+    border-bottom: solid black 2px;
+  }
+
+  #button_pocket {
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+  }
   button {
     font-size: 0.6em;
     margin: 0px;
     width: 48%;
     height: 100px;
     font-size: inherit;
-    position: absolute;
-    bottom: 5px;
   }
   #accept {
     left: 5px;

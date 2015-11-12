@@ -26,9 +26,19 @@
 
 <div id="container">
   <div id="instructions">
-    <div>Special Instructions from <strong><%= @donations[0].donor.org_name %></strong>:</div>
-    <p><%= @donations[0].instructions%></p>
-    <p>Contact: <%= @donations[0].donor.contact_name%><br><%= @donations[0].donor.phone%><br>with any questions.</p>
+    <div>
+      Special Instructions from:<br>
+      <strong><%= @donations[0].donor.org_name %></strong>
+    </div>
+    <div>
+      <%= @donations[0].instructions%>
+    </div>
+    <div>
+      Contact: <%= @donations[0].donor.contact_name%>
+    </div>
+    <div>
+      <%= @donations[0].donor.phone%>
+    </div>
   </div>
   <div id="button_pocket">
     <button id="accept">
