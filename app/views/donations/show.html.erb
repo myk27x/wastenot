@@ -3,7 +3,7 @@
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
 
 <div style='width: 100%;'>
-  <div id="map" style='width: auto; height: 400px;'></div>
+  <div id="map"></div>
 </div>
 
 <script>
@@ -24,24 +24,18 @@
     });
 </script>
 
-<br>
 <div id="container">
   <div id="instructions">
-    <div>Special Instructions from: <strong><%= @donations[0].donor.org_name %></strong></div>
+    <div>Special Instructions from <strong><%= @donations[0].donor.org_name %></strong>:</div>
     <p><%= @donations[0].instructions%></p>
-    <p>Contact <%= @donations[0].donor.contact_name%> at <%= @donations[0].donor.phone%> with any questions.</p>
+    <p>Contact: <%= @donations[0].donor.contact_name%><br><%= @donations[0].donor.phone%><br>with any questions.</p>
   </div>
   <div id="button_pocket">
-    <div class="spacer"></div>
-    <a href="#" class="button" id="accept">
-      Take this pick-up?
-    </a>
-    <div class="spacer_gap">
-      <p>or</p>
-    </div>
-    <a href="#" class="button" id="decline">
-      Maybe next time...?
-    </a>
-    <div class="spacer"></div>
+    <button id="accept">
+      Pick up?
+    </button>
+    <button id="decline">
+      Next time?
+    </button>
   </div>
 </div>

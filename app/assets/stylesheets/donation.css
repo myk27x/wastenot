@@ -1,38 +1,28 @@
 #map {
-  margin-left: 55px;
-  margin-right: 55px;
-  margin-top: 25px;
+  margin: 25px 55px 0px 55px;
+  width: auto;
+  height: 400px;
+}
+
+#container {
+  margin: 20px 0;
+  text-align: center;
 }
 
 #instructions {
   width: 100%;
-  text-align: center;
+  margin-bottom: 25px;
 }
 
-#button_pocket{
-  width: 100%;
-  height: 36px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.spacer {
-  width: 25%;
-}
-
-.spacer_gap {
-  width: 7%;
-  height: 2em;
-  line-height: 1px;
-  text-align: center;
-}
-
-.button {
+button {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: inline;
   width: 20%;
   min-width: 128px;
-  height: 2em;
-  line-height: 33px;
-  text-align: center;
+  height: 36px;
+  font-size: 16px;
+  line-height: 28px;
   border: 2px solid #888;
   border-radius: 5px;
   background-color: #DDD;
@@ -40,15 +30,54 @@
   color: black;
 }
 
-.button:hover {
+#button_pocket button:hover {
   background-color: #BBB;
 }
 
 #message {
   width: 100%;
-  text-align: center;
 }
 
 .delivery-instructions {
-  max-width: 200px;
+  max-width: 400px;
+}
+
+#button_pocket p {
+  display: inline;
+}
+
+@media(max-width: 700px) {
+  body {
+    margin: 0;
+  }
+
+  #map {
+    margin: 0px;
+    height: 350px;
+  }
+
+  .delivery-instructions {
+    max-width: 300px;
+  }
+
+  #container {
+    margin: 10px;
+    font-size: 22px;
+  }
+
+  button {
+    font-size: 0.6em;
+    margin: 0px;
+    width: 48%;
+    height: 100px;
+    font-size: inherit;
+    position: absolute;
+    bottom: 5px;
+  }
+  #accept {
+    left: 5px;
+  }
+  #decline {
+    right: 5px;
+  }
 }
