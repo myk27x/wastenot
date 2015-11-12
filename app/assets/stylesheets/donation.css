@@ -10,13 +10,21 @@ body {
 }
 
 #container {
-  margin: 20px 0;
+  margin: 20px 55px;
   text-align: center;
+  font-size: 22px;
 }
 
 #instructions {
   width: 100%;
   margin-bottom: 25px;
+}
+
+#instructions div:nth-child(2) {
+  margin: 7px 0;
+  padding: 7px 0;
+  border-top: solid #888 2px;
+  border-bottom: solid #888 2px;
 }
 
 button {
@@ -42,6 +50,7 @@ button:hover {
 #message {
   width: 100%;
   text-align: center;
+  font-size: 22px;
 }
 
 .delivery-instructions {
@@ -65,14 +74,6 @@ button:hover {
   #container {
     height: auto;
     margin: 10px 0 0 0;
-    font-size: 22px;
-  }
-
-  #instructions div:nth-child(2) {
-    margin: 7px 0;
-    padding: 7px 0;
-    border-top: solid #888 2px;
-    border-bottom: solid #888 2px;
   }
 
   button {
