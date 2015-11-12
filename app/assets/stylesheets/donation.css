@@ -64,7 +64,7 @@ button:hover {
 
   #container {
     height: auto;
-    margin-top: 10px;
+    margin: 10px 0 0 0;
     font-size: 22px;
   }
 
@@ -75,21 +75,11 @@ button:hover {
     border-bottom: solid #888 2px;
   }
 
-  #button_pocket {
-    bottom: 5px;
-  }
-
   button {
     font-size: 0.6em;
     margin: 0px;
     width: 48%;
     height: 100px;
     font-size: inherit;
-  }
-  #accept {
-    left: 5px;
-  }
-  #decline {
-    right: 5px;
   }
 }
